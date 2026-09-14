@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#111827">
+  <title>Kill The Box</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="loginScreen" class="screen">
+      <div class="panel login-panel">
+        <div class="brand">🎯 KILL THE BOX</div>
+        <p class="subtitle">Lempar tombak, hancurkan box, kumpulkan skor!</p>
+
+        <form id="loginForm" autocomplete="on">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" minlength="3" maxlength="20"
+                 placeholder="Masukkan username" required autocomplete="username">
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" minlength="3"
+                 placeholder="Masukkan password" required autocomplete="current-password">
+
+          <button class="primary" type="submit">LOGIN</button>
+          <p id="loginStatus" class="status"></p>
+        </form>
+
+        <div class="leaderboard-box">
+          <div class="section-title">
+            <span>🏆 LEADERBOARD</span>
+            <button id="refreshLoginBoard" class="small-btn" type="button">↻</button>
+          </div>
+          <div id="loginLeaderboard" class="board">Memuat leaderboard...</div>
+        </div>
+
+        <p class="hint">Gunakan akun yang sudah terdaftar di Google Sheet.</p>
+      </div>
+    </section>
+
+    <section id="menuScreen" class="screen hidden">
+      <div class="panel menu-panel">
+        <div class="brand">🎯 KILL THE BOX</div>
+        <p>Halo, <strong id="playerName">Player</strong>!</p>
+        <div class="menu-buttons">
+          <button id="startBtn" class="primary big">▶ MULAI PERMAINAN</button>
+          <button id="menuBoardBtn" class="secondary big">🏆 LEADERBOARD</button>
+          <button id="logoutBtn" class="danger big">↩ LOGOUT</button>
+        </div>
+        <div class="leaderboard-box">
+          <div class="section-title"><span>🏆 TOP 10</span><button id="refreshMenuBoard" class="small-btn">↻</button></div>
+          <div id="menuLeaderboard" class="board">Memuat leaderboard...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden">
+      <div class="hud">
+        <div>👤 <span id="hudUser">Player</span></div>
+        <div>⭐ Score: <span id="score">0</span></div>
+        <div>🔱 Tombak: <span id="spears">20</span></div>
+        <button id="pauseBtn" class="pause-btn" type="button">Ⅱ</button>
+      </div>
+
+      <div class="game-wrap">
+        <canvas id="gameCanvas"></canvas>
+        <div id="gameMessage" class="game-message hidden"></div>
+      </div>
+
+      <div class="mobile-help">PC: klik/tarik untuk melempar • HP: sentuh/geser untuk membidik dan lepaskan</div>
+    </section>
+
+    <section id="pauseScreen" class="overlay hidden">
+      <div class="panel pause-panel">
+        <h2>⏸ PAUSE</h2>
+        <p>Permainan dijeda.</p>
+        <button id="resumeBtn" class="primary big">▶ LANJUTKAN</button>
+        <button id="pauseBoardBtn" class="secondary big">🏆 LEADERBOARD</button>
+        <button id="quitBtn" class="danger big">🏠 KEMBALI KE MENU</button>
+        <div class="leaderboard-box">
+          <div class="section-title"><span>TOP 10</span><button id="refreshPauseBoard" class="small-btn">↻</button></div>
+          <div id="pauseLeaderboard" class="board">Memuat leaderboard...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameOverScreen" class="overlay hidden">
+      <div class="panel result-panel">
+        <h2 id="resultTitle">GAME OVER</h2>
+        <p>Score kamu</p>
+        <div id="finalScore" class="final-score">0</div>
+        <p id="saveStatus" class="status">Menyimpan skor...</p>
+        <button id="playAgainBtn" class="primary big">🔄 MAIN LAGI</button>
+        <button id="resultMenuBtn" class="secondary big">🏠 MENU</button>
+        <div class="leaderboard-box">
+          <div class="section-title"><span>🏆 TOP 10</span></div>
+          <div id="resultLeaderboard" class="board">Memuat leaderboard...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

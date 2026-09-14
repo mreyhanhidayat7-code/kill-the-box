@@ -1,0 +1,93 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0b1020;
+  --panel: #111827;
+  --panel2: #1f2937;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+  --accent2: #16a34a;
+  --danger: #ef4444;
+  --border: rgba(255,255,255,.1);
+}
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); font-family: Arial, Helvetica, sans-serif; }
+body { min-height: 100vh; overflow: hidden; }
+button, input { font: inherit; }
+button { cursor: pointer; border: 0; }
+.app { min-height: 100vh; }
+.screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.hidden { display: none !important; }
+
+.panel {
+  width: min(560px, 100%);
+  max-height: 94vh;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #111827, #0f172a);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+.brand { text-align: center; font-size: clamp(27px, 7vw, 44px); font-weight: 900; letter-spacing: 1px; }
+.subtitle { color: var(--muted); text-align: center; margin: 8px 0 22px; }
+label { display:block; margin: 12px 0 6px; font-weight: 700; }
+input {
+  width:100%; padding: 13px 14px; border-radius: 12px;
+  border: 1px solid var(--border); background:#0b1220; color:var(--text);
+  outline: none;
+}
+input:focus { border-color: var(--accent); }
+.primary, .secondary, .danger {
+  width:100%; padding:13px 16px; margin-top:10px; border-radius:12px; color:white; font-weight:800;
+  transition: transform .12s, opacity .12s;
+}
+.primary { background: var(--accent2); }
+.secondary { background: #374151; }
+.danger { background: #b91c1c; }
+.primary:hover, .secondary:hover, .danger:hover { transform: translateY(-1px); opacity:.94; }
+.big { padding:15px; font-size:16px; }
+.status { min-height: 20px; color: #fbbf24; text-align:center; margin:8px 0; }
+.hint { color:var(--muted); font-size:12px; text-align:center; margin-top:15px; }
+
+.leaderboard-box { margin-top:20px; background:rgba(0,0,0,.18); border:1px solid var(--border); border-radius:15px; padding:12px; }
+.section-title { display:flex; align-items:center; justify-content:space-between; font-weight:900; margin-bottom:9px; }
+.small-btn { background:#374151; color:#fff; border-radius:8px; padding:5px 9px; }
+.board { font-size:14px; }
+.row { display:grid; grid-template-columns: 42px 1fr 80px; gap:7px; padding:9px 6px; border-bottom:1px solid rgba(255,255,255,.06); align-items:center; }
+.row:last-child { border-bottom:0; }
+.rank { font-weight:900; }
+.score-cell { text-align:right; font-weight:900; color:#fbbf24; }
+.empty { color:var(--muted); text-align:center; padding:15px; }
+
+.menu-buttons { margin:18px 0; }
+
+.game-screen { padding:0; display:block; background:#07111f; }
+.hud {
+  height:58px; display:flex; align-items:center; gap:18px; padding:8px 12px;
+  background:#111827; border-bottom:1px solid var(--border); font-weight:800; position:relative; z-index:5;
+}
+.hud > div { white-space:nowrap; }
+.pause-btn { margin-left:auto; background:#374151; color:#fff; border-radius:10px; width:42px; height:40px; font-weight:900; font-size:20px; }
+.game-wrap { position:relative; width:100%; height:calc(100vh - 58px); }
+canvas { display:block; width:100%; height:100%; touch-action:none; }
+.mobile-help { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.65); font-size:11px; text-align:center; pointer-events:none; width:95%; }
+
+.overlay {
+  position:fixed; inset:0; z-index:20; display:flex; align-items:center; justify-content:center;
+  padding:16px; background:rgba(0,0,0,.75); backdrop-filter:blur(5px);
+}
+.pause-panel, .result-panel { width:min(500px,100%); }
+.pause-panel h2, .result-panel h2 { text-align:center; margin:0 0 5px; }
+.pause-panel > p, .result-panel > p { text-align:center; color:var(--muted); }
+.final-score { text-align:center; font-size:58px; font-weight:900; color:#fbbf24; margin:4px 0; }
+.game-message {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:clamp(24px, 7vw, 52px); font-weight:900; text-shadow:0 3px 15px #000; pointer-events:none;
+}
+@media (max-width:600px) {
+  .panel { padding:18px; border-radius:17px; }
+  .hud { gap:9px; font-size:12px; }
+  .hud > div:nth-child(1) { max-width:100px; overflow:hidden; text-overflow:ellipsis; }
+  .mobile-help { display:block; }
+}
+@media (min-width:601px) { .mobile-help { display:none; } }
