@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -23,8 +23,29 @@
           <input id="password" name="password" type="password" minlength="3"
                  placeholder="Masukkan password" required autocomplete="current-password">
 
-          <button class="primary" type="submit">LOGIN</button>
+          <button id="loginBtn" class="primary" type="submit">SIGN IN</button>
           <p id="loginStatus" class="status"></p>
+          <p class="account-switch">Belum punya akun? <button id="showSignupBtn" class="link-btn" type="button">SIGN UP</button></p>
+        </form>
+
+        <form id="signupForm" class="hidden" autocomplete="on">
+          <h2 class="form-title">CREATE ACCOUNT</h2>
+
+          <label for="signupUsername">Username</label>
+          <input id="signupUsername" name="username" type="text" minlength="3" maxlength="20"
+                 placeholder="Buat username" required autocomplete="username">
+
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" name="password" type="password" minlength="3"
+                 placeholder="Buat password" required autocomplete="new-password">
+
+          <label for="signupPasswordConfirm">Konfirmasi Password</label>
+          <input id="signupPasswordConfirm" name="passwordConfirm" type="password" minlength="3"
+                 placeholder="Ulangi password" required autocomplete="new-password">
+
+          <button id="signupBtn" class="primary" type="submit">CREATE ACCOUNT</button>
+          <p id="signupStatus" class="status"></p>
+          <p class="account-switch"><button id="backToLoginBtn" class="link-btn" type="button">← KEMBALI KE SIGN IN</button></p>
         </form>
 
         <div class="leaderboard-box">
@@ -35,7 +56,7 @@
           <div id="loginLeaderboard" class="board">Memuat leaderboard...</div>
         </div>
 
-        <p class="hint">Gunakan akun yang sudah terdaftar di Google Sheet.</p>
+        <p id="loginHint" class="hint">Sudah punya akun? Sign in. Belum punya akun? Tekan Sign Up untuk membuat akun baru.</p>
       </div>
     </section>
 
